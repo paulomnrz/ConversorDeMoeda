@@ -27,24 +27,24 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  final realController = TextEditingController();
-  final dolarController = TextEditingController();
-  final euroController = TextEditingController();
+  TextEditingController realController = TextEditingController();
+  TextEditingController dolarController = TextEditingController();
+  TextEditingController euroController = TextEditingController();
 
   double dolar;
   double euro;
 
-  void _realChanged(String text){
+  _realChanged(String text){
     double real = double.parse(text);
     dolarController.text = (real/dolar).toStringAsFixed(2);
     euroController.text = (real/euro).toStringAsFixed(2);
   }
-  void _dolarChanged(String text){
+  _dolarChanged(String text){
     double dolar = double.parse(text);
     realController.text = (dolar * this.dolar).toStringAsFixed(2);
     euroController.text = (dolar * this.dolar/euro).toStringAsFixed(2);
   }
-  void _euroChanged(String text){
+  _euroChanged(String text){
     double euro = double.parse(text);
     realController.text = (euro * this.euro).toStringAsFixed(2);
     dolarController.text = (euro * this.euro / dolar).toStringAsFixed(2);
@@ -118,6 +118,7 @@ class _HomeState extends State<Home> {
 
   Widget buildTextField(String label, String prefix, TextEditingController controler, Function f){
     return TextField(
+      controller: controler,
       decoration: InputDecoration(
           labelText: label,
           labelStyle: TextStyle(
