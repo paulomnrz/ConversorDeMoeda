@@ -5,12 +5,7 @@ import 'dart:convert';
 
 const request = "https://api.hgbrasil.com/finance/quotations?format=json&key=98d971c3";
 
-
-
 void main () async {
-
-
-
   runApp(MaterialApp(
     home: Home(),
     theme: ThemeData(
@@ -110,7 +105,6 @@ class _HomeState extends State<Home> {
     );
   }
 
-
   Future<Map> getData() async {
     http.Response response = await http.get(request);
     return json.decode(response.body);
@@ -137,5 +131,3 @@ class _HomeState extends State<Home> {
   }
 
 }
-
-
